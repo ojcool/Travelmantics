@@ -50,7 +50,7 @@ public class FirebaseUtil {
                         String userId = firebaseAuth.getUid();
                         checkAdmin(userId);
                     }
-                    //Toast.makeText("", "Welcome back!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(callerActivity.getBaseContext(), "Welcome back!", Toast.LENGTH_LONG).show();
                 }
             };
             connectStorage();
@@ -62,7 +62,7 @@ public class FirebaseUtil {
     }
 
     private static void signIn() {
-        // Choose authentication providers
+        // Choose authentication providers email or goole
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
                 new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build());
@@ -111,6 +111,7 @@ public class FirebaseUtil {
         ref.addChildEventListener(listener);
     }
 
+     // Attach listener
     public static void attachListener() {
         mFirebaseAuth.addAuthStateListener(mAuthListener);
     }
